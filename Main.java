@@ -21,7 +21,7 @@ public class Main {
 
 class MinhaThread extends Thread {
 	int id = 0, limite = 0;
-	static volatile int x;
+  static volatile int x;
 
 	MinhaThread(int novoId, int novoLimite) {
 		this.id = novoId;
@@ -29,12 +29,13 @@ class MinhaThread extends Thread {
 	}
 
 	public void run() {
+    // O X impresso mostra de forma imprecisa qual a última 
+    // thread que passou pelo loop sem o concluir.
 		for(int i = 0; i < limite; i++) {
 			x = id;
-			int a = id + i;
-			System.out.print(".");
-			System.out.print("\nT: " + id + " L: " + x);
+			System.out.print("\nT: " + id + " " + i + " L: " + x);
 		}
+
 		System.out.println("\nTerminou thread " + id);
 	}
 }
